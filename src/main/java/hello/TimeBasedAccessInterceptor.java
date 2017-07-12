@@ -3,6 +3,7 @@ package hello;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -12,6 +13,10 @@ public class TimeBasedAccessInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		System.out.println("Before handling the request "+request.getParameter("name"));
+		if(request.getParameter("name").equals("gautam")){
+			response.sendError(HttpStatus.BAD_REQUEST.value());
+			return false;
+		}
 		return super.preHandle(request, response, handler);
 	}
 	
