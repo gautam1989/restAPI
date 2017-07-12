@@ -11,7 +11,7 @@ public class TimeBasedAccessInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		System.out.println("Before handling the request"+request.getParameter("name"));
+		System.out.println("Before handling the request "+request.getParameter("name"));
 		return super.preHandle(request, response, handler);
 	}
 	
